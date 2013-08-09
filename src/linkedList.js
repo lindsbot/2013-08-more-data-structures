@@ -23,18 +23,20 @@ var makeLinkedList = function(){
     return head;
   };
 
-  list.contains = function(val){
-
-    /* 
-
-    hey head: do you have this value?
-      if yes, return true
-      if no, ask: do you have a next node?
-        if no: return false
-        if yes: run contains on next node
-
-    */
-  
+  list.contains = function(val, node){
+    var node = node || list.head;
+    if (node.value === val){
+      return true;
+    }
+    else{
+      if (node.next){
+        node = node.next;
+        return list.contains(val, node);
+      }
+      else{
+        return false;
+      }
+    }
   };
 
   return list;

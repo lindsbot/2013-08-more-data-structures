@@ -40,10 +40,19 @@ it("should remove and return the head", function(){
 
     expect(linkedList.removeHead().value).toEqual("banana");
 
-
-
   });
 
+
+it("should return true if the linked list contains a passed-in value", function(){
+
+  linkedList.addToTail("apple");
+  linkedList.addToTail("orange");
+  linkedList.addToTail("banana");
+
+  expect(linkedList.contains('banana')).toEqual(true);
+  expect(linkedList.contains('your mom')).toEqual(false);
+
+});
 
   // it("should be able to add a node to the tail", function(){
   //   expect(linkedList.addToTail(xxxxx).toEqual(xxxxx));
