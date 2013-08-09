@@ -24,10 +24,26 @@ describe("linkedList", function() {
 
     expect(linkedList.tail.value).toEqual("banana");
     expect(linkedList.head.next.next.value).toEqual("banana");
-  
-  
+  });
+
+it("should remove and return the head", function(){
+    linkedList.addToTail("apple");
+    linkedList.addToTail("orange");
+    linkedList.addToTail("banana");
+
+    linkedList.removeHead();
+
+    expect(linkedList.head.value).toEqual("orange");
+    expect(linkedList.head.next.value).toEqual("banana");
+
+    linkedList.removeHead();
+
+    expect(linkedList.removeHead().value).toEqual("banana");
+
+
 
   });
+
 
   // it("should be able to add a node to the tail", function(){
   //   expect(linkedList.addToTail(xxxxx).toEqual(xxxxx));
