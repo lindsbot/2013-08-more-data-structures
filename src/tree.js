@@ -26,7 +26,7 @@ treeMethods.contains = function(val){
   	}
   	else {
   		for (var i = 0; i < this.children.length; i++) {
-  			return this.children[i].contains(val);
+  			return !!treeMethods.contains.call(this.children[i], val);
   		}
   	}
   }
