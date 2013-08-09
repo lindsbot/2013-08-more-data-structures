@@ -1,30 +1,33 @@
 var makeTree = function(val){
   var newTree = {};
   newTree.value = val;
+  newTree.addChild = treeMethods.addChild;
+  newTree.contains = treeMethods.contains;
   newTree.children = [];
-  newTree.parent = null;
-
-  var root = treeMethods.addChild(val);
-
   return newTree;
 };
 
-
-
 var treeMethods = {};
 
-treeMethods.addChild = function(val, parent){
-  // addChild is going to create a node
-  // make node a child of the parent... 
-  // if parent is undefined --> make child of newTree
+treeMethods.addChild = function(val){
 	var node = {};
-	node.parent = parent || null;
-	node.val = val;
+	node.value = val;
 	node.children = [];
-	parent.children.push(node);
-
-	//return node;
+    this.children.push(node);
 };
 
-treeMethods.contains = function(){
+treeMethods.contains = function(val){
+  if (this.value === val){
+    return true;
+  } 
+  else {
+  	if (!this.children){
+  		return false
+  	}
+  	else {
+  		for (var i = 0; i < this.children.length; i++) {
+  			return this.children[i].contains(val);
+  		}
+  	}
+  }
 };
