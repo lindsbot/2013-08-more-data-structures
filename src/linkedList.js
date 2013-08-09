@@ -23,7 +23,18 @@ var makeLinkedList = function(){
     return head;
   };
 
-  list.contains = function(){
+  list.contains = function(val){
+
+    /* 
+
+    hey head: do you have this value?
+      if yes, return true
+      if no, ask: do you have a next node?
+        if no: return false
+        if yes: run contains on next node
+
+    */
+  
   };
 
   return list;
