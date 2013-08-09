@@ -17,4 +17,28 @@ describe("linkedList", function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it("should be able to add a node to the tail", function(){
+    linkedList.addToTail("apple");
+    linkedList.addToTail("orange");
+    linkedList.addToTail("banana");
+
+    expect(linkedList.tail.value).toEqual("banana");
+  
+  
+
+  });
+
+  // it("should be able to add a node to the tail", function(){
+  //   expect(linkedList.addToTail(xxxxx).toEqual(xxxxx));
+  // });
+
+  // it("should be able to add a node to the tail", function(){
+  //   expect(linkedList.addToTail(xxxxx).toEqual(xxxxx));
+  // });
+
+  // it("should be able to add a node to the tail", function(){
+  //   expect(linkedList.addToTail(xxxxx).toEqual(xxxxx));
+  // });
+
+
 });
