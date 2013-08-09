@@ -8,9 +8,7 @@ var makeLinkedList = function(){
     // if there is no head, set head to the new node and the tail to the new node
     // else set old tail's next value to newNode, set list's tail pointer to newNode
     if (list.head === null) {
-      list.head = makeNode(val);
-      list.head.next = null;
-      list.tail = list.head;
+      list.head = list.tail = makeNode(val);
     }
     else {
       var newestNode = makeNode(val);

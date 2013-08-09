@@ -23,6 +23,7 @@ describe("linkedList", function() {
     linkedList.addToTail("banana");
 
     expect(linkedList.tail.value).toEqual("banana");
+    expect(linkedList.head.next.next.value).toEqual("banana");
   
   
 
