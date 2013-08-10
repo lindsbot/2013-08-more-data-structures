@@ -65,7 +65,14 @@ HashTable.prototype.retrieve = function(key){
   return result;
 };
 
-HashTable.prototype.remove = function(){
+HashTable.prototype.remove = function(key){
+  var i = getIndexBelowMaxForKey(key, this._limit);
+  var pairs = this._storage.get(i);
+  for (var i=0; i < pairs.length; i++){
+    if (pairs[i][0] === key){
+      pairs.splice(i, 1);
+    }
+  }
 };
 
 // NOTE: For this code to work, you will NEED the code from hashTableHelpers.js

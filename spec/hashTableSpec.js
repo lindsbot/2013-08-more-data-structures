@@ -21,4 +21,19 @@ describe("hashTable", function() {
   });
 
   // add more tests!
+  
+  it("should remove a pair when .remove(key) is called", function(){
+    var v1 = 'val1', v2 = 'val2';
+    
+    hashTable.insert(v1, v1);
+    hashTable.insert(v2, v2);
+    expect(hashTable.retrieve(v1)).toEqual(v1);
+
+    hashTable.remove(v2);
+
+    expect(hashTable.retrieve(v2)).toEqual(undefined);
+  })
+
+
+
 });
