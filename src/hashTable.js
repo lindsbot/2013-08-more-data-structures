@@ -10,8 +10,10 @@ var HashTable = function(){
   // There's also a '.each' method that you might find
   // handy once you're working on resizing
   this._storage = makeLimitedArray(this._limit);
-  this._storage.each(function(bucket){
-    bucket = [];
+  this._storage.each(function(){
+    
+
+
   });
 };
 
