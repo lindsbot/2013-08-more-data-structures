@@ -25,13 +25,13 @@ makeDoublyLinkedList.prototype.removeHead = function(){
 makeDoublyLinkedList.prototype.addToTail = function(val){
   var newNode = this.makeNode(val);
   newNode.prev = this.tail || null;
-  this.tail.next = newNode;
+  this.tail && (this.tail.next = newNode);
   this.tail = newNode;   
 
 };
 
 makeDoublyLinkedList.prototype.contains = function(val){
-	return _(this.list).reduce(function(){
+	return _.reduce(this.list, function(){
 		return this.list.head.value === val || this.next && this.next.contains(val);
 	}, false);
 };
