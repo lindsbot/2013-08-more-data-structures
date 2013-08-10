@@ -10,11 +10,10 @@ var HashTable = function(){
   // There's also a '.each' method that you might find
   // handy once you're working on resizing
   this._storage = makeLimitedArray(this._limit);
-  this._storage.each(function(){
-    
+  // this._storage.each(function(value, index, collection){
+  //   collection[index] = {};
 
-
-  });
+  // });
 };
 
 HashTable.prototype.insert = function(key, val){
@@ -22,22 +21,48 @@ HashTable.prototype.insert = function(key, val){
   console.log(i);
   var keyValue = [key, val];
 
-  //if collision, create/push to bucket's indiv array
-  if (this._storage.get(i) === undefined) {
-    var collisions = [];
+
+  if (this._storage.get(i) === undefined){
+    this._storage.set(i, []);    
+    var collisions = this._storage.get(i);
     collisions.push(keyValue);
     this._storage.set(i, collisions);
   }
   else{
-    this._storage.set(i, keyValue);
+    var collisions = this._storage.get(i);
+    collisions.push(keyValue);
+    this._storage.set(i, collisions);
   }
+  
+  // collisions array =  this._storage.get(i)
+  // collisions.push(keyValue)
+  // this._storage.set(i, collisions)
+
+
+  //if collision, create/push to bucket's indiv array
+  // if (this._storage.get(i) === undefined) {
+  //   var collisions = [];
+  //   collisions.push(keyValue);
+  //   this._storage.set(i, collisions);
+  // }
+  // else{
+  //   this._storage.set(i, keyValue);
+  // }
   //else, just put in bucket
   //this._storage.set(i, collisions);
 };
 
 HashTable.prototype.retrieve = function(key){
   var i = getIndexBelowMaxForKey(key, this._limit);
-  return this._storage.get(i);
+  var collisions = this._storage.get(i);
+  var result;
+  for (var i = 0; i < collisions.length; i++) {
+    if (collisions[i][0] === key) {
+      result = collisions[i][1];
+    }
+  }
+  if (!result){console.log("nope");}
+  return result;
 };
 
 HashTable.prototype.remove = function(){
