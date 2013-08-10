@@ -21,13 +21,15 @@ treeMethods.contains = function(val){
     return true;
   } 
   else {
-  	if (!this.children){
+  	if (this.children.length === 0){
   		return false
   	}
   	else {
+  		var contains = false;
   		for (var i = 0; i < this.children.length; i++) {
-  			return !!treeMethods.contains.call(this.children[i], val);
+  			contains = contains || treeMethods.contains.call(this.children[i], val);
   		}
+  		return contains;
   	}
   }
 };

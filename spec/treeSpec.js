@@ -22,5 +22,16 @@ describe("tree", function() {
     expect(tree.contains("Sam")).toEqual(true);
   });
 
+  it("should add a child to a parent", function(){
+    tree.addChild("Sam");
+    tree.addChild("Jane");
+    tree.addChild("Leroy");
 
-});
+  expect(tree.contains("Harold")).toEqual(false);
+  expect(tree.contains("Sam")).toEqual(true);
+  });
+
+
+
+
+}); 
