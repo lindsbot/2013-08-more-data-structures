@@ -24,14 +24,14 @@ var makeLinkedList = function(){
   };
 
   list.contains = function(val, node){
-    var node = node || list.head;
-    if (node.value === val){
+    var item = node || list.head;
+    if (item.value === val){
       return true;
     }
     else{
-      if (node.next){
-        node = node.next;
-        return list.contains(val, node);
+      if (item.next){
+        item = item.next;
+        return list.contains(val, item);
       }
       else{
         return false;
