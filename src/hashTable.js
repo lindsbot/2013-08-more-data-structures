@@ -1,26 +1,12 @@
 var HashTable = function(){
   this._limit = 8;
-
-  // Use a limited array to store inserted elements.
-  // It'll keep you from using too much space. Usage:
-  //
-  //   limitedArray.set(3, 'hi');
-  //   limitedArray.get(3); // alerts 'hi'
-  //
-  // There's also a '.each' method that you might find
-  // handy once you're working on resizing
   this._storage = makeLimitedArray(this._limit);
-  // this._storage.each(function(value, index, collection){
-  //   collection[index] = {};
-
-  // });
 };
 
 HashTable.prototype.insert = function(key, val){
   var i = getIndexBelowMaxForKey(key, this._limit);
   console.log(i);
   var keyValue = [key, val];
-
 
   if (this._storage.get(i) === undefined){
     this._storage.set(i, []);    
@@ -33,23 +19,6 @@ HashTable.prototype.insert = function(key, val){
     collisions.push(keyValue);
     this._storage.set(i, collisions);
   }
-  
-  // collisions array =  this._storage.get(i)
-  // collisions.push(keyValue)
-  // this._storage.set(i, collisions)
-
-
-  //if collision, create/push to bucket's indiv array
-  // if (this._storage.get(i) === undefined) {
-  //   var collisions = [];
-  //   collisions.push(keyValue);
-  //   this._storage.set(i, collisions);
-  // }
-  // else{
-  //   this._storage.set(i, keyValue);
-  // }
-  //else, just put in bucket
-  //this._storage.set(i, collisions);
 };
 
 HashTable.prototype.retrieve = function(key){
